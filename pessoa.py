@@ -8,11 +8,14 @@ NOMES = ["Daniel", "Guilherme", "João", "Antônio", "Vanessa",
 POKEMONS = [
     PokemonFogo("Charmander"),
     PokemonFogo("Flarion"),
-    PokemonFogo("Charmilion"),
+    PokemonFogo("Charmeleon"),
+    PokemonFogo("Charizard"),
     PokemonEletrico("Pikachu"),
     PokemonEletrico("Raiuchu"),
     PokemonAgua("Squirtle"),
-    PokemonAgua("Magicarp")
+    PokemonAgua("Magicarp"),
+    PokemonAgua("Psyduck"),
+    PokemonAgua("Wartotle")
 ]
 
 
@@ -80,6 +83,21 @@ class Pessoa:
             return pokemon_escolhido
         else:
             print("{} não tem nenhum pokemon para ser escolhido".format(self))
+
+    def explorar(self):
+        if (random.random() <= 0.3):
+            pokemon = Pokemon(random.choice(POKEMONS))
+            print("Um pokemon selvagem apareceu: {}".format(pokemon.nome))
+            escolha = input("Deseja capturá-lo? (s/n) ")
+            if escolha == "s":
+                if (random.random() >= 0.5):
+                    self.capturar(pokemon)
+                else:
+                    print("{} fugiu. Que pena!!!".format(pokemon.nome))
+            else:
+                print("Ok, boa viagem")
+        else:
+            print("Essa exploração não deu em nada")
 
 
 class Player(Pessoa):
